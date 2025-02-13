@@ -3,7 +3,7 @@
 package a1template;
 
 public class CaesarCipher {
-
+        //test by binah
     /** Character array to store the letters in the alphabet in order */
     Character[] alphabet;
 
