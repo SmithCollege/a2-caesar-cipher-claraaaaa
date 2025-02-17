@@ -3,9 +3,9 @@
 package a1template;
 
 public class CaesarCipher {
-        //test by binah
+        
     /** Character array to store the letters in the alphabet in order */
-    Character[] alphabet;
+    static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','q','r','s','t','u','v','w','x','y','z'};
 
     /** DynamicArray object providing ArrayList-like operations for Characters */
     DynamicArray<Character> cipher;
@@ -19,7 +19,7 @@ public class CaesarCipher {
      * @param offset Offset to use when creating `cipher` of DynamicArray type
      */
     CaesarCipher(int offset){
-        // Fill in here
+        this.offset = offset;
     }
 
     /** Implementation of linear search that looks through the alphabet
@@ -28,17 +28,38 @@ public class CaesarCipher {
      * @return int indicating position of val in the alphabet array
      */
     public int findIndex(char val){
-        // This is a stub -- fill in the code and return the
-        // value you calculate
-        return 0;
+        for (int i = 0; i < alphabet.length; i++) { //iterates through each char in the alphabet
+            if (alphabet[i] == val)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /** Encode a message using the cipher
      * @param T message to encode
      * @return encoded message */  
     public String encode(String message){
-        // Fill in here and update return statement based on your code
-        return new String(); 
+        char[] msg = message.toCharArray(); //converts string to an array of characters that can be operated on individually
+        boolean isUppercase;
+        for (int i = 0; i < msg.length; i++) { //iterates through each char in the message
+            isUppercase = false; //resets variable at beginning of loop
+            if (msg[i] != Character.toLowerCase(msg[i])){ //if toLowerCase changes the char, it was originally uppercase
+                isUppercase = true; //makes note that the character was originally uppercase
+            }
+            msg[i] = Character.toLowerCase(msg[i]); //converts to lowercase so it can be matched against our lowercase alphabet
+            int alphaIndex = this.findIndex(msg[i]); //fetches the index of the char in our alphabet
+            if (alphaIndex != -1) //if char is in the alphabet (excludes punctuation, etc)
+            {
+                msg[i] = alphabet[(alphaIndex + offset)%26];
+            }
+            if (isUppercase)
+            {
+                msg[i] = Character.toUpperCase(msg[i]);
+            }
+        }
+        return new String(msg); 
      }
 
     /** Decode a message using the cipher 
@@ -47,8 +68,25 @@ public class CaesarCipher {
      * @return decoded message
     */
     public String decode(String message){
-        // Fill in here and update return statement based on your code
-        return new String();
+        char[] msg = message.toCharArray(); //converts string to an array of characters that can be operated on individually
+        boolean isUppercase;
+        for (int i = 0; i < msg.length; i++) { //iterates through each char in the message
+            isUppercase = false; //resets variable at beginning of loop
+            if (msg[i] != Character.toLowerCase(msg[i])){ //if toLowerCase changes the char, it was originally uppercase
+                isUppercase = true; //makes note that the character was originally uppercase
+            }
+            msg[i] = Character.toLowerCase(msg[i]); //converts to lowercase so it can be matched against our lowercase alphabet
+            int alphaIndex = this.findIndex(msg[i]); //fetches the index of the char in our alphabet
+            if (alphaIndex != -1) //if char is in the alphabet (excludes punctuation, etc)
+            {
+                msg[i] = alphabet[(alphaIndex - offset)%26];
+            }
+            if (isUppercase)
+            {
+                msg[i] = Character.toUpperCase(msg[i]);
+            }
+        }
+        return new String(msg); 
     }
 
     public static void main(String[] args) {
