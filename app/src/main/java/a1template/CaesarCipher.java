@@ -2,13 +2,12 @@
 // Classes to build the project
 package a1template;
 
-public class CaesarCipher {
+public class CaesarCipher{
         
     /** Character array to store the letters in the alphabet in order */
-    static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','q','r','s','t','u','v','w','x','y','z'};
-
+    static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     /** DynamicArray object providing ArrayList-like operations for Characters */
-    DynamicArray<Character> cipher;
+    static DynamicArray<Character> cipher = new DynamicArray(0, alphabet);
 
     /** Private offset that tracks how many positions to shift the index for
     * This cipher */
@@ -37,6 +36,11 @@ public class CaesarCipher {
         return -1;
     }
 
+    public char get(int index)
+    {
+        return alphabet[(index - offset+26)%26];
+    }
+
     /** Encode a message using the cipher
      * @param T message to encode
      * @return encoded message */  
@@ -52,7 +56,7 @@ public class CaesarCipher {
             int alphaIndex = this.findIndex(msg[i]); //fetches the index of the char in our alphabet
             if (alphaIndex != -1) //if char is in the alphabet (excludes punctuation, etc)
             {
-                msg[i] = alphabet[(alphaIndex + offset)%26];
+                msg[i] = alphabet[(alphaIndex - offset+26)%26];
             }
             if (isUppercase)
             {
@@ -79,7 +83,7 @@ public class CaesarCipher {
             int alphaIndex = this.findIndex(msg[i]); //fetches the index of the char in our alphabet
             if (alphaIndex != -1) //if char is in the alphabet (excludes punctuation, etc)
             {
-                msg[i] = alphabet[(alphaIndex - offset)%26];
+                msg[i] = alphabet[(alphaIndex + offset)%26];
             }
             if (isUppercase)
             {
