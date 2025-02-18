@@ -2,13 +2,13 @@
 // Classes to build the project
 package a1template;
 
-public class CaesarCipher {
+public class CaesarCipher extends DynamicArray{
         
     /** Character array to store the letters in the alphabet in order */
-    static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','q','r','s','t','u','v','w','x','y','z'};
-
+    static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     /** DynamicArray object providing ArrayList-like operations for Characters */
     DynamicArray<Character> cipher;
+
 
     /** Private offset that tracks how many positions to shift the index for
     * This cipher */
@@ -18,10 +18,19 @@ public class CaesarCipher {
      * populating the alphabet
      * @param offset Offset to use when creating `cipher` of DynamicArray type
      */
+    CaesarCipher(int offset, Character[] alphabet){
+        super(alphabet);
+        this.offset = offset;
+    }
+    
     CaesarCipher(int offset){
+        super(alphabet);
         this.offset = offset;
     }
 
+    public char get(int index){
+        return alphabet[(index-offset+26)%26];
+    }
     /** Implementation of linear search that looks through the alphabet
      * array to identify the position of the passed value
      * @param val character to search for
@@ -52,7 +61,7 @@ public class CaesarCipher {
             int alphaIndex = this.findIndex(msg[i]); //fetches the index of the char in our alphabet
             if (alphaIndex != -1) //if char is in the alphabet (excludes punctuation, etc)
             {
-                msg[i] = alphabet[(alphaIndex + offset)%26];
+                msg[i] = alphabet[(alphaIndex - offset+26)%26];
             }
             if (isUppercase)
             {
@@ -61,6 +70,18 @@ public class CaesarCipher {
         }
         return new String(msg); 
      }
+    // public String encode(String message){
+    //     ArrayList<String> strList = new ArrayList<String>( 
+    //         Arrays.asList(message)); 
+    //     char[] charArray = new char[message.length];
+    //     for (int i=0; i<message.length;i++){ 
+    //         newidx=findIndex(message[i])+offset
+    //         charArray[i]=alphabet[newidx]
+    //     }
+
+    //     // Fill in here and update return statement based on your code
+    //     return charArray; 
+    //  }
 
     /** Decode a message using the cipher 
      * @param String message to decode
@@ -79,7 +100,7 @@ public class CaesarCipher {
             int alphaIndex = this.findIndex(msg[i]); //fetches the index of the char in our alphabet
             if (alphaIndex != -1) //if char is in the alphabet (excludes punctuation, etc)
             {
-                msg[i] = alphabet[(alphaIndex - offset)%26];
+                msg[i] = alphabet[(alphaIndex + offset)%26];
             }
             if (isUppercase)
             {
@@ -90,6 +111,7 @@ public class CaesarCipher {
     }
 
     public static void main(String[] args) {
+        
     }
     
 }

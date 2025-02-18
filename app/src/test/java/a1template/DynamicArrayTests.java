@@ -29,7 +29,7 @@ public class DynamicArrayTests {
         // Create the base arrays that we will use to create DynamicArrays
         createAlphabet();
 
-        DynamicArray<Character> alphaTest = new DynamicArray<Character>(0, this.alphabet);
+        DynamicArray<Character> alphaTest = new DynamicArray<Character>(this.alphabet);
         assertTrue("Is a returned by the 0 index?", alphaTest.get(0) == 'a');
         assertTrue("Is z returned by the 25th index?", alphaTest.get(25) == 'z');
     }
@@ -39,7 +39,7 @@ public class DynamicArrayTests {
         // Create the base arrays that we will use to create DynamicArrays
         createCount();
 
-        DynamicArray<Integer> numberTest = new DynamicArray<Integer>(0, this.count);
+        DynamicArray<Integer> numberTest = new DynamicArray<Integer>(this.count);
         assertEquals("Is a returned by the 0 index?", numberTest.get(0) == 0);
         assertTrue("Is z returned by the 9th index?", numberTest.get(9) == 9);
     }

@@ -6,11 +6,28 @@ public class DynamicArray<T> implements IndexAccess<T>{
 
     int length;
     T[] contents;
+    int offset;
     
     /** Returns the value stored at a given index
      * @param i index of element to read
      * @return value stored at the given index
      */
+    // public DynamicArray(){
+    //     length=10;
+    //     contents = new T[10];
+    // }
+
+    public DynamicArray(int offset,T[] array){
+        this.offset=offset;
+        this.length=array.length;
+        this.contents = array;
+    }
+
+    public DynamicArray(T[] array){
+        this.length=array.length;
+        contents = array;
+
+    }
     public T get(int i){
         return contents[i];
 
@@ -34,5 +51,6 @@ public class DynamicArray<T> implements IndexAccess<T>{
         contents[i]=val;
 
     };
+
 
 }
