@@ -1,10 +1,14 @@
 // Do not change the line below. It lets Gradle find your 
 // Classes to build the project
 package a1template;
-
+/**
+ * An interface that have multiple methods for array
+ * @author Binah, Clara
+ */
 public class DynamicArray<T> implements IndexAccess<T>{
 
     int length;
+    //static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int offset;
     T[] contents;
 
@@ -24,6 +28,7 @@ public class DynamicArray<T> implements IndexAccess<T>{
         this.contents = array;
         this.offset = offset;
     }
+
 
     /** Returns the value stored at a given index
      * @param i index of element to read

@@ -2,6 +2,10 @@
 // Classes to build the project
 package a1template;
 
+/**
+ * With a given offset, encode or decode messages
+ * @author Binah, Clara
+ */
 public class CaesarCipher{
         
     /** Character array to store the letters in the alphabet in order */
@@ -13,8 +17,7 @@ public class CaesarCipher{
     * This cipher */
     private int offset;
 
-    /** Constructor that should define the instance variables, including
-     * populating the alphabet
+    /** Constructor that defines the instance variables 
      * @param offset Offset to use when creating `cipher` of DynamicArray type
      */
     CaesarCipher(int offset){

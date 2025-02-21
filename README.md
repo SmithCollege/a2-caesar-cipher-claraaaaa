@@ -4,9 +4,9 @@
 
 Your readme should include the following information. Each student needs to submit all of this information independently, even when pair programming. 
 
-Programming Partner Name:
+Programming Partner Name: Binah Friedman and Clara Yang
 
-Other Collaborators (and kudos to people who were especially helpful):
+Other Collaborators (and kudos to people who were especially helpful): Halie and Elaine
 
 References Used:
 
@@ -14,7 +14,10 @@ References Used:
 ## Reflection Questions
 
 What was your favorite part of this assignment?
+Making a cipher
 
 What was most challenging about this assignment?
+Using github classroom was the most challenging part about this assignment
 
 General comments on your experience with this assignment:
+It was a learning experience with the new platform.
