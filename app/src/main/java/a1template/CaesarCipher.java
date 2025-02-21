@@ -13,7 +13,6 @@ public class CaesarCipher{
     /** DynamicArray object providing ArrayList-like operations for Characters */
     static DynamicArray<Character> cipher = new DynamicArray(0, alphabet);
 
-
     /** Private offset that tracks how many positions to shift the index for
     * This cipher */
     private int offset;
@@ -21,19 +20,10 @@ public class CaesarCipher{
     /** Constructor that defines the instance variables 
      * @param offset Offset to use when creating `cipher` of DynamicArray type
      */
-    CaesarCipher(int offset, Character[] alphabet){
-        super(alphabet);
-        this.offset = offset;
-    }
-    
     CaesarCipher(int offset){
-        super(alphabet);
         this.offset = offset;
     }
 
-    public char get(int index){
-        return alphabet[(index-offset+26)%26];
-    }
     /** Implementation of linear search that looks through the alphabet
      * array to identify the position of the passed value
      * @param val character to search for
@@ -49,7 +39,10 @@ public class CaesarCipher{
         return -1;
     }
 
-
+    public char get(int index)
+    {
+        return alphabet[(index - offset+26)%26];
+    }
 
     /** Encode a message using the cipher
      * @param T message to encode
@@ -75,18 +68,6 @@ public class CaesarCipher{
         }
         return new String(msg); 
      }
-    // public String encode(String message){
-    //     ArrayList<String> strList = new ArrayList<String>( 
-    //         Arrays.asList(message)); 
-    //     char[] charArray = new char[message.length];
-    //     for (int i=0; i<message.length;i++){ 
-    //         newidx=findIndex(message[i])+offset
-    //         charArray[i]=alphabet[newidx]
-    //     }
-
-    //     // Fill in here and update return statement based on your code
-    //     return charArray; 
-    //  }
 
     /** Decode a message using the cipher 
      * @param String message to decode
@@ -116,7 +97,6 @@ public class CaesarCipher{
     }
 
     public static void main(String[] args) {
-        
     }
     
 }
