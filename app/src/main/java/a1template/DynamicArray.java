@@ -8,20 +8,13 @@ package a1template;
 public class DynamicArray<T> implements IndexAccess<T>{
 
     int length;
-    //static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int offset;
     T[] contents;
 
-    //
-    // public DynamicArray(){
-    //     length = 10;
-    //     contents = new T[10];
-    // }
-
-    // public DynamicArray(int length){
-    //     this.length = length;
-    //     this.contents = new T[length];
-    // }
+    public DynamicArray(T[] array){
+        this.length=array.length;
+        contents = array;
+    }
 
     public DynamicArray(int offset, T[] array){
         this.length = array.length;
