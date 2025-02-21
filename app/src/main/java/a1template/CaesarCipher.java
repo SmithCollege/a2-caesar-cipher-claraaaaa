@@ -2,20 +2,23 @@
 // Classes to build the project
 package a1template;
 
-public class CaesarCipher extends DynamicArray{
+/**
+ * With a given offset, encode or decode messages
+ * @author Binah, Clara
+ */
+public class CaesarCipher{
         
     /** Character array to store the letters in the alphabet in order */
     static Character[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     /** DynamicArray object providing ArrayList-like operations for Characters */
-    DynamicArray<Character> cipher;
+    static DynamicArray<Character> cipher = new DynamicArray(0, alphabet);
 
 
     /** Private offset that tracks how many positions to shift the index for
     * This cipher */
     private int offset;
 
-    /** Constructor that should define the instance variables, including
-     * populating the alphabet
+    /** Constructor that defines the instance variables 
      * @param offset Offset to use when creating `cipher` of DynamicArray type
      */
     CaesarCipher(int offset, Character[] alphabet){
@@ -45,6 +48,8 @@ public class CaesarCipher extends DynamicArray{
         }
         return -1;
     }
+
+
 
     /** Encode a message using the cipher
      * @param T message to encode
